@@ -1,0 +1,326 @@
+@import url("https://fonts.googleapis.com/css2?family=Pirata+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap");
+#sim-status #activity {
+  display: none;
+}
+#sim-status #sim-btn {
+  display: inline-block;
+}
+#sim-status #sim-loading {
+  display: none;
+}
+#sim-status.loading #sim-btn {
+  display: none;
+}
+#sim-status.loading #sim-loading {
+  display: inline-block;
+}
+#sim-status.active #activity {
+  display: inline-block;
+}
+#sim-status.active #sim-btn {
+  display: none;
+}
+#sim-status #sim-active {
+  display: inline-block;
+  font-family: "JetBrains Mono";
+  padding: 0.25em;
+  border-radius: 0.5em;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    outline: 2px solid hotpink;
+  }
+  50% {
+    outline: 8px solid hotpink;
+  }
+  100% {
+    outline: 2px solid hotpink;
+  }
+}
+.animate .post {
+  opacity: 0;
+  max-height: 0;
+  transition: max-height 300ms ease-in-out, opacity 500ms ease-in-out;
+}
+.animate .post.added {
+  opacity: 1;
+  max-height: 400px;
+}
+.animate .metric.updated {
+  animation: metric 500ms ease-in-out 1;
+}
+
+@keyframes metric {
+  0% {
+    outline: 0px solid;
+  }
+  50% {
+    outline: 10px solid;
+  }
+  100% {
+    outline: 0px solid;
+  }
+}
+body {
+  font-family: "Amiri";
+  font-size: 14px;
+  margin: 0;
+  background: linear-gradient(90deg, lightblue, hotpink);
+}
+
+h1,
+h1 a {
+  color: hotpink;
+  font-family: "Pirata One";
+  font-size: 2em;
+  margin-top: 0;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  background: lightblue;
+}
+h1 a,
+h1 a a {
+  margin-left: -1.125em;
+}
+
+h2 {
+  font-family: "JetBrains Mono";
+}
+
+#container {
+  max-width: 640px;
+  padding: 1em;
+  margin: 0 auto;
+  background: white;
+  position: relative;
+  border-right: 2px solid lightblue;
+  border-left: 2px solid lightblue;
+}
+
+button {
+  font-family: "JetBrains Mono";
+  cursor: pointer;
+}
+
+label, select, #sim-loading {
+  font-family: "JetBrains Mono";
+}
+
+#sim-status {
+  display: flex;
+  align-items: baseline;
+}
+#sim-status p {
+  margin: 0;
+}
+#sim-status label[for=post-sort-order] {
+  margin-left: auto;
+}
+
+a {
+  font-family: "JetBrains Mono";
+  text-decoration: none;
+  color: black;
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: all 50ms;
+  border-radius: 0.5em;
+  background-color: transparent;
+}
+a:hover {
+  box-shadow: 0 1em 0 lightblue;
+  top: -10px;
+  padding-bottom: 1em;
+  transition: all 200ms;
+}
+a.permalink {
+  font-size: 0.75em;
+  margin-left: 0.5em;
+}
+
+a.image-link {
+  all: unset;
+  grid-area: icon;
+}
+
+img.profile-image {
+  width: 64px;
+  border-radius: 32px;
+  margin-top: 0.75em;
+  cursor: pointer;
+  transition: all 200ms;
+  top: 0;
+  position: relative;
+  background-color: #e6a9ec;
+}
+img.profile-image:hover {
+  box-shadow: 0 1em 0 #e6a9ec;
+  top: -1em;
+  padding-bottom: 1em;
+}
+
+#posts {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.meme {
+  cursor: pointer;
+}
+
+#image-preview-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 100vw;
+  height: 100vh;
+}
+#image-preview-container.show-preview {
+  display: flex;
+}
+#image-preview-container img {
+  max-width: 80vw;
+  max-height: 80vh;
+}
+
+.post {
+  margin: 1em 0;
+  margin-bottom: 1.5em;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  column-gap: 1em;
+  grid-template-areas: "icon user" "icon meme" "icon text" "icon meta" "replies replies";
+}
+.post .user {
+  display: flex;
+  align-items: center;
+  grid-area: user;
+  margin-bottom: 0.5em;
+}
+.post .user .user-link {
+  color: black;
+  font-weight: bold;
+  order: 1;
+}
+.post .user .permalink {
+  color: gray;
+  order: 2;
+  padding: 0.5em 0;
+}
+.post .user .permalink:hover {
+  box-shadow: -1em 0 0 lightblue;
+  top: 0;
+  padding-left: 1em;
+}
+.post .image-link {
+  grid-area: icon;
+}
+.post .text {
+  font-size: 1.6em;
+  margin: 0.25em 0;
+  line-height: 1.25;
+  grid-area: text;
+}
+.post .meme {
+  max-width: 100%;
+  max-height: 240px;
+  grid-area: meme;
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: all 50ms;
+  border-radius: 1em;
+}
+.post .meme:hover {
+  top: -10px;
+  box-shadow: 0 1em 0 hotpink;
+  transition: all 200ms;
+}
+.post .metrics {
+  grid-area: meta;
+  line-height: 0.8em;
+  display: flex;
+  align-items: center;
+}
+.post .date {
+  font-family: "JetBrains Mono";
+  font-size: 0.8em;
+  color: gray;
+}
+.post .metric {
+  padding: 0.5em 0.25em;
+  border-radius: 0.25em;
+  line-height: 1em;
+  display: inline-flex;
+  align-items: baseline;
+  font-size: 0.8em;
+  color: hotpink;
+}
+.post .metric:hover {
+  box-shadow: 0 1em 0 hotpink;
+  padding-bottom: 1em;
+}
+.post .metric .icon {
+  font-size: 1.5em;
+}
+.post .metric .count {
+  font-size: 1.25em;
+}
+.post .replies {
+  margin-left: 1em;
+  border-left: 2px dashed hotpink;
+  padding-left: 1em;
+  grid-area: replies;
+}
+
+#user-info {
+  font-family: "JetBrains Mono";
+  position: relative;
+}
+
+#user-name {
+  color: hotpink;
+  position: relative;
+}
+
+#profile-image {
+  position: absolute;
+  top: -1em;
+  right: 0;
+  width: 128px;
+}
+
+#follow a {
+  margin-right: 1em;
+}
+
+#follows a, #followers a {
+  display: inline-block;
+  margin-right: 1em;
+}
+#follows .user, #followers .user {
+  display: flex;
+  align-items: center;
+}
+#follows .user .user-link, #followers .user .user-link {
+  order: 2;
+}
+#follows .user .image-link, #followers .user .image-link {
+  order: 1;
+}
+#follows .user .profile-image, #followers .user .profile-image {
+  width: 32px;
+}
+
+/*# sourceMappingURL=style.css.map */

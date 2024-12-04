@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>melon chat</title>
+	<link rel='shortcut icon' href="/favicon.ico" type='image/x-icon'>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	<!-- <script type="text/javascript" src="/js/cool.js"></script> -->
+	<!-- <script type="module" src="/js/MelonChat.js"></script> -->
+</head>
+<body>
+	<div id="container">
+		<h1><a href="./index.html">Melon Chat Melon Chat Melon Chat Melon Chat Melon Chat</a></h1>
+		
+	<div id="sim-status" class="">
+		<p id="activity"><span id="sim-active">Simulation is active </span></p>
+		<button id="sim-btn">Run Simulation</button>
+		<span id="sim-loading">Loading</span>
+		<label for="post-sort-order">Sort by:</label>
+		<select name="post-sort-order" id="post-sort-order">
+			<option value="recent">Most recent</option>
+			<option value="oldest">Oldest</option>
+			<option value="replies">Most replies</option>
+			<option value="likes">Most likes</option>
+		</select>
+		<!-- <p id="explanation">While active, the simulation will run every 10 seconds for a count of 60.</p> -->
+	</div>
+
+
+		<div id="posts"></div>
+		 
+	<div id="load-more">
+		<button id="load-more-button">Load More Posts</button>
+	</div>
+
+		 
+		
+	</div>
+	<div id="image-preview-container">
+		<img id="image-preview-image" src="" alt="preview-image">
+	</div>
+	
+<script type="module" src="./js/index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>melon chat</title>
+	<link rel='shortcut icon' href="/favicon.ico" type='image/x-icon'>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	<!-- <script type="text/javascript" src="/js/cool.js"></script> -->
+	<!-- <script type="module" src="/js/MelonChat.js"></script> -->
+</head>
+<body>
+	<div id="container">
+		<h1><a href="./index.html">Melon Chat Melon Chat Melon Chat Melon Chat Melon Chat</a></h1>
+		 
+		<div id="posts"></div>
+		 
+		 
+		
+	</div>
+	<div id="image-preview-container">
+		<img id="image-preview-image" src="" alt="preview-image">
+	</div>
+	
+<script type="module">
+import { MelonChat } from './js/MelonChat.js';
+window.addEventListener('load', () => {
+	const id = location.search.split('=')[1];
+	const chat = new MelonChat(() => {
+		chat.addSinglePost(id, true);
+	});
+});	
+</script>
+
+</body>
+</html>

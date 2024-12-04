@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>melon chat</title>
+	<link rel='shortcut icon' href="/favicon.ico" type='image/x-icon'>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	
+	<!-- <script type="text/javascript" src="/js/cool.js"></script> -->
+	<!-- <script type="module" src="/js/MelonChat.js"></script> -->
+</head>
+<body>
+	<div id="container">
+		<h1><a href="./index.html">Melon Chat Melon Chat Melon Chat Melon Chat Melon Chat</a></h1>
+		
+<div id="user-info">
+	<div id="user-image"><img id="profile-image" alt="profile-image"></div>
+	<h2>Posts by <span id="user-name"></span></h2>
+	<p>Joined <span id="joined-date"></span></p>
+</div>
+<div id="follow">
+	<a href="#"	id="follows-link">Follows <span id="follows-count">0</span></a>
+	<a href="#"	id="followers-link">Followers <span id="followers-count">0</span></a>
+</div>
+
+		<div id="posts"></div>
+		 
+		 
+		
+	</div>
+	<div id="image-preview-container">
+		<img id="image-preview-image" src="" alt="preview-image">
+	</div>
+	
+<script type="module">
+import { MelonChat } from './js/MelonChat.js';
+window.addEventListener('load', () => {
+	const userId = location.search.split('=')[1];
+	const chat = new MelonChat(() => {
+
+		chat.updateOrder('recent');
+		chat.setUserContent(userId);
+
+		document.getElementById('follows-link').href = "follows.html?id=" + userId;
+		document.getElementById('followers-link').href = "followers.html?id=" + userId;
+	});
+});	
+</script>
+
+</body>
+</html>
